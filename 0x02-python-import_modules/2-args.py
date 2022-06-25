@@ -1,15 +1,12 @@
 #!/usr/bin/python3
-from sys import argv
+import sys
 
 if __name__ == "__main__":
-    size = len(argv)
-    end_clause = "arguments:"
-    if size == 2:
-        end_clause = "argument:"
-    elif size == 1:
-        end_clause = "arguments."
+    argv = sys.argv
+    length = len(argv)
 
-    print("{} {}".format(size - 1, end_clause))
+    print("{} argument{}{}".format(length - 1, '' if length == 2 else 's',
+                                   '.' if length == 1 else ':'))
 
-    for i in range(1, size):
-        print("{}: {}".format(i, argv[i]))
+    for argnum in range(1, length):
+        print("{}: {}".format(argnum, argv[argnum]))
